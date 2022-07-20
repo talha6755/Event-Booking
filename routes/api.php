@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post("login",[LoginController::class,'postLogin']);
 }
 
+{
+    Route::get("all-categories",[CategoryController::class,'index']);
+    Route::post("save-category",[CategoryController::class,'store']);
 
+
+}
 
 
 
