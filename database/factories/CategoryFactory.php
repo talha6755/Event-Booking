@@ -18,7 +18,9 @@ class CategoryFactory extends Factory
     {
         return [
 
+            "user_id"=>$this->faker->numberBetween(0,10),
             "category_name"=>$this->faker->name(),
+            "thumbnail"=>$this->faker->image(),
             "publication_status"=>$this->faker->numerify(1),
         ];
     }

@@ -17,10 +17,16 @@ class LoginController extends Controller
 
         $credentials= $request->only(["email","password"]);
         if(Auth::attempt($credentials)){
-            return"you have successfuly logged in";
+            return response()->json([
+                "status" => 200,
+                "message" => "you have Successfuly logged in",
+            ]);
         }
 
-        return"opps!you have entered invalid credentials";
+        return response()->json([
+            "status" => 200,
+            "message" => "Opps! You have Entered invalid Credentials",
+        ]);
 
     }
 

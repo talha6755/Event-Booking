@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("user_id");
             $table->string("category_name");
+            $table->string("thumbnail");
             $table->enum("publication_status", [0,1])->default(1);
             $table->timestamps();
         });

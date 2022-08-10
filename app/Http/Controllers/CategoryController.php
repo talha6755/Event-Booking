@@ -21,12 +21,22 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "category_name" => "required"
+            "category_name" => "required",
+            "thumbnail" => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
+
+        $thumbnail = '';
+        if ($file = $request->file('thumbnail')) {
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->move('images/categoryTHumbnail', $filename);
+            $thumbnail = $filename;
+        }
 
         $insertcategory = Category::create([
             "category_name" => $request->category_name,
-            "publication_status" => $request->publication_status
+            "thumbnail" => $thumbnail,
+            "publication_status" => $request->publication_status,
         ]);
 
        return response()->json([

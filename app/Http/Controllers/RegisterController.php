@@ -24,7 +24,11 @@ class RegisterController extends Controller
 
         ]);
 
-        return"Great!you have successfuly registered account".$insert;
+        return response()->json([
+                "status" => 200,
+                "message" => "Great! You have Successfuly Registered Account",
+                "data" => $insert,
+            ]);
 
     }
 }
